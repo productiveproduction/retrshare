@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Panel, Table } from '../styles/StyledComponents'
+import { Panel } from '../styles/StyledComponents'
 import { useStore } from '../store/useStore'
 
 const ShareResources: React.FC = () => {

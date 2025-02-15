@@ -76,7 +76,7 @@ const UseResources: React.FC = () => {
   }
 
   const handleStop = (appId: string) => {
-    alert('Application stopped successfully!')
+    alert(`Application ${appId} stopped successfully!`)
   }
 
   return (
