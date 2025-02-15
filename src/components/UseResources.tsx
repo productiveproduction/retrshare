@@ -1,5 +1,5 @@
 import React from 'react'
-import { Panel, Table } from '../styles/StyledComponents'
+import { Panel, Table, FormGroup, Button } from '../styles/StyledComponents'
 import { useStore } from '../store/useStore'
 
 const availableResources = [
@@ -107,9 +107,9 @@ const UseResources: React.FC = () => {
                 <td>{resource.bandwidth}</td>
                 <td>{resource.reliability}</td>
                 <td>
-                  <button onClick={() => handleConnect(resource.user)}>
+                  <Button onClick={() => handleConnect(resource.user)}>
                     CONNECT
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -117,10 +117,10 @@ const UseResources: React.FC = () => {
         </Table>
       </div>
 
-      <div style={{ marginTop: '30px' }}>
+      <div>
         <h3>Launch Application</h3>
         <form>
-          <div>
+          <FormGroup>
             <label htmlFor="app-type">Application Type:</label>
             <select id="app-type">
               <option value="web">Web Server</option>
@@ -130,9 +130,9 @@ const UseResources: React.FC = () => {
               <option value="ai">AI Training</option>
               <option value="custom">Custom Application</option>
             </select>
-          </div>
+          </FormGroup>
 
-          <div>
+          <FormGroup>
             <label htmlFor="resource-requirements">Resource Requirements:</label>
             <select id="resource-requirements">
               <option value="minimal">Minimal (1 core, 1 GB RAM, 10 GB storage)</option>
@@ -141,9 +141,9 @@ const UseResources: React.FC = () => {
               <option value="extreme">Extreme (8 cores, 16 GB RAM, 500 GB storage)</option>
               <option value="custom">Custom Configuration</option>
             </select>
-          </div>
+          </FormGroup>
 
-          <div>
+          <FormGroup>
             <label htmlFor="duration">Expected Duration:</label>
             <select id="duration">
               <option value="short">Short ({'<'} 1 hour)</option>
@@ -152,17 +152,15 @@ const UseResources: React.FC = () => {
               <option value="extended">Extended ({'>'} 48 hours)</option>
               <option value="indefinite">Indefinite (until manually stopped)</option>
             </select>
-          </div>
+          </FormGroup>
 
-          <div style={{ marginTop: '20px' }}>
-            <button type="button" onClick={handleLaunch}>
-              LAUNCH APPLICATION
-            </button>
-          </div>
+          <Button type="button" onClick={handleLaunch}>
+            LAUNCH APPLICATION
+          </Button>
         </form>
       </div>
 
-      <div style={{ marginTop: '30px' }}>
+      <div>
         <h3>Your Running Applications</h3>
         <Table>
           <thead>
@@ -184,7 +182,7 @@ const UseResources: React.FC = () => {
                 <td>{app.uptime}</td>
                 <td>{app.status}</td>
                 <td>
-                  <button onClick={() => handleStop(app.id)}>STOP</button>
+                  <Button onClick={() => handleStop(app.id)}>STOP</Button>
                 </td>
               </tr>
             ))}

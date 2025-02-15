@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Panel } from '../styles/StyledComponents'
+import { Panel, FormGroup, StatusBox, Button } from '../styles/StyledComponents'
 import { useStore } from '../store/useStore'
 
 const ShareResources: React.FC = () => {
@@ -19,7 +19,7 @@ const ShareResources: React.FC = () => {
     <Panel visible={activePanel === 'share'}>
       <h2>Share Your Computing Resources</h2>
       <form>
-        <div>
+        <FormGroup>
           <label htmlFor="cpu-percent">CPU Share Percentage:</label>
           <input
             type="range"
@@ -30,9 +30,9 @@ const ShareResources: React.FC = () => {
             onChange={(e) => setCpuValue(Number(e.target.value))}
           />
           <span>{cpuValue}%</span>
-        </div>
+        </FormGroup>
 
-        <div>
+        <FormGroup>
           <label htmlFor="memory-amount">Memory to Share (MB):</label>
           <input
             type="number"
@@ -41,9 +41,9 @@ const ShareResources: React.FC = () => {
             max="32768"
             defaultValue="1024"
           />
-        </div>
+        </FormGroup>
 
-        <div>
+        <FormGroup>
           <label htmlFor="storage-amount">Storage to Share (GB):</label>
           <input
             type="number"
@@ -52,9 +52,9 @@ const ShareResources: React.FC = () => {
             max="1000"
             defaultValue="50"
           />
-        </div>
+        </FormGroup>
 
-        <div>
+        <FormGroup>
           <label htmlFor="bandwidth-limit">Bandwidth Limit (Mbps):</label>
           <input
             type="number"
@@ -63,9 +63,9 @@ const ShareResources: React.FC = () => {
             max="1000"
             defaultValue="10"
           />
-        </div>
+        </FormGroup>
 
-        <div>
+        <FormGroup>
           <label htmlFor="availability">Availability Schedule:</label>
           <select id="availability" defaultValue="always">
             <option value="always">Always Available</option>
@@ -74,37 +74,33 @@ const ShareResources: React.FC = () => {
             <option value="weekend">Weekends Only</option>
             <option value="custom">Custom Schedule</option>
           </select>
-        </div>
+        </FormGroup>
 
-        <div>
+        <FormGroup>
           <label htmlFor="trusted-users">Trusted Users Only:</label>
           <input type="checkbox" id="trusted-users" />
-        </div>
+        </FormGroup>
 
-        <div style={{ marginTop: '20px' }}>
-          <button type="button" onClick={handleUpdateSharing}>
-            UPDATE SHARING CONFIGURATION
-          </button>
-        </div>
+        <Button type="button" onClick={handleUpdateSharing}>
+          UPDATE SHARING CONFIGURATION
+        </Button>
       </form>
 
-      <div style={{ marginTop: '30px' }}>
+      <StatusBox>
         <h3>Current Shared Resource Status</h3>
-        <div style={{ border: '1px solid #00FF00', padding: '10px' }}>
-          <p>
-            Status:{' '}
-            <span style={{ color: '#FFFF00' }}>
-              {isSharing ? 'ACTIVE' : 'PAUSED'}
-            </span>
-          </p>
-          <p>Uptime: 3 days, 7 hours, 22 minutes</p>
-          <p>Resources currently used by: PIXELDUST, RETROHAX0R</p>
-          <p>Contribution Points Earned: 1,275</p>
-          <button type="button" style={{ marginTop: '10px' }} onClick={toggleSharing}>
-            {isSharing ? 'PAUSE SHARING' : 'RESUME SHARING'}
-          </button>
-        </div>
-      </div>
+        <p>
+          Status:{' '}
+          <span style={{ color: '#FFFF00' }}>
+            {isSharing ? 'ACTIVE' : 'PAUSED'}
+          </span>
+        </p>
+        <p>Uptime: 3 days, 7 hours, 22 minutes</p>
+        <p>Resources currently used by: PIXELDUST, RETROHAX0R</p>
+        <p>Contribution Points Earned: 1,275</p>
+        <Button type="button" onClick={toggleSharing}>
+          {isSharing ? 'PAUSE SHARING' : 'RESUME SHARING'}
+        </Button>
+      </StatusBox>
     </Panel>
   )
 }
